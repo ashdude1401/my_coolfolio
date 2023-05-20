@@ -121,99 +121,101 @@ class TestemonialCard extends StatelessWidget {
             color: Color(0xFFFFFFFF),
           ),
           child: kIsWeb
-              ? Stack(
-                  children: [
-                    Positioned(
-                      bottom: size.height * 0.18,
-                      left: size.width * 0.18,
-                      child: CircleAvatar(
-                        radius: size.width * 0.07,
-                        backgroundColor:
-                            const Color(0xFFFF4C7A).withOpacity(0.1),
-                      ),
-                    ),
-                    Positioned(
-                      top: size.height * 0.18,
-                      right: size.width * 0.18,
-                      child: CircleAvatar(
-                        radius: size.width * 0.07,
-                        backgroundColor:
-                            const Color(0xFF7A71F5).withOpacity(0.1),
-                      ),
-                    ),
-                    Center(
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: size.width * 0.05,
-                          vertical: size.height * 0.025,
-                        ),
-                        width: size.width <= 600
-                            ? size.width * 0.8
-                            : size.width * 0.6,
-                        margin: EdgeInsets.only(
-                          right: size.width * 0.02,
-                          left: size.width * 0.02,
-                          bottom: size.height * 0.18,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xFFFFFFFF),
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(
-                                  0, 3), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(kTestimonialImg1Png),
-                            SizedBox(
-                              height: size.height * 0.02,
-                            ),
-                            Text(
-                              kCustomerName,
-                              softWrap: true,
-                              style: textTheme.bodyLarge?.copyWith(
-                                color: MyTheme.kPrimaryColor,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            SizedBox(
-                              height: size.height * 0.02,
-                            ),
-                            Text(
-                              kBoutique,
-                              softWrap: true,
-                              style: TextStyle(
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                                color: MyTheme.kPrimaryColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            SizedBox(
-                              height: size.height * 0.02,
-                            ),
-                            Text(
-                              kTestonomial,
-                              softWrap: true,
-                              maxLines: 3,
-                              textAlign: TextAlign.center,
-                              textScaleFactor: size.width <= 600 ? 0.8 : 1.2,
-                              style: textTheme.bodyLarge?.copyWith(
-                                fontFamily: GoogleFonts.mukta().fontFamily,
-                                color: MyTheme.kPrimaryColor,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
+              ? SizedBox(
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        bottom: size.height * 0.18,
+                        left: size.width * 0.18,
+                        child: CircleAvatar(
+                          radius: size.width * 0.07,
+                          backgroundColor:
+                              const Color(0xFFFF4C7A).withOpacity(0.1),
                         ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        top: size.height * 0.18,
+                        right: size.width * 0.18,
+                        child: CircleAvatar(
+                          radius: size.width * 0.07,
+                          backgroundColor:
+                              const Color(0xFF7A71F5).withOpacity(0.1),
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.05,
+                            vertical: size.height * 0.025,
+                          ),
+                          width: size.width <= 600
+                              ? size.width * 0.8
+                              : size.width * 0.6,
+                          margin: EdgeInsets.only(
+                            right: size.width * 0.02,
+                            left: size.width * 0.02,
+                            bottom: size.height * 0.18,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFFFFFFF),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(kTestimonialImg1Png),
+                              SizedBox(
+                                height: size.height * 0.02,
+                              ),
+                              Text(
+                                kCustomerName,
+                                softWrap: true,
+                                style: textTheme.bodyLarge?.copyWith(
+                                  color: MyTheme.kPrimaryColor,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.02,
+                              ),
+                              Text(
+                                kBoutique,
+                                softWrap: true,
+                                style: TextStyle(
+                                  fontFamily: GoogleFonts.inter().fontFamily,
+                                  color: MyTheme.kPrimaryColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.02,
+                              ),
+                              Text(
+                                kTestonomial,
+                                softWrap: true,
+                                maxLines: 3,
+                                textAlign: TextAlign.center,
+                                textScaleFactor: size.width <= 600 ? 0.8 : 1.2,
+                                style: textTheme.bodyLarge?.copyWith(
+                                  fontFamily: GoogleFonts.mukta().fontFamily,
+                                  color: MyTheme.kPrimaryColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               : Container(
                   padding: EdgeInsets.only(
