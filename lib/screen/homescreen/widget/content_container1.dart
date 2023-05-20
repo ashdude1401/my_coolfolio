@@ -6,6 +6,12 @@ import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
 
+
+/// The above code defines two classes, ContentContainer1 and Content, which build a responsive
+/// container with text and icons for a tailoring app.
+/// The `ContentContainer1` class is a responsive container that displays either a row or a column of
+/// content based on the device screen type.
+
 class ContentContainer1 extends StatelessWidget {
   const ContentContainer1({
     super.key,
@@ -18,7 +24,11 @@ class ContentContainer1 extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
-      return Container(
+      return /// This code is defining a responsive container that displays either a row or a column of
+      /// content based on the device screen type. The container has a height of 99% of the
+      /// device screen height and a width of the device screen width. It also has padding of 4%
+      /// of the device screen width and height on the top and bottom and left and right sides.
+      Container(
           height: size.height * 0.99,
           width: size.width,
           padding: EdgeInsets.symmetric(
@@ -45,6 +55,8 @@ class ContentContainer1 extends StatelessWidget {
   }
 }
 
+/// The Content class is a stateless widget that displays a column of text and icons with descriptions
+/// in a grid format.
 class Content extends StatelessWidget {
   const Content({
     super.key,
@@ -55,7 +67,15 @@ class Content extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
     return Builder(builder: (context) {
-      return Column(
+      return /// The `Column` widget is displaying a column of text and icons with descriptions in a
+      /// grid format. It contains several child widgets such as `SvgPicture`, `Text`,
+      /// `SizedBox`, and `Wrap`. The `crossAxisAlignment` property is set to
+      /// `CrossAxisAlignment.start` which aligns the children to the left side of the column,
+      /// while the `mainAxisAlignment` property is set to `MainAxisAlignment.center` which
+      /// centers the children vertically in the column. The `Wrap` widgets contain
+      /// `CustomGridItem` widgets which display icons and text with descriptions in a grid
+      /// format.
+      Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

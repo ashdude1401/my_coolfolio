@@ -6,6 +6,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
+/// The Footer class is a stateless widget that displays a responsive footer with various links and
+/// icons.
 
 class Footer extends StatelessWidget {
   const Footer({
@@ -37,6 +39,13 @@ class Footer extends StatelessWidget {
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  /// The above code is creating a column layout with a header icon, a title "Contact
+                  /// Us", and social media icons (Discord, Instagram, Facebook, and Twitter) arranged
+                  /// in a row. The layout is styled using predefined constants and sizes. The text
+                  /// style is set to a medium body font with a custom font family, color, and font
+                  /// weight. The social media icons are loaded from SVG image assets. The
+                  /// `CrossAxisAlignment` property is set to `CrossAxisAlignment.start` to align the
+                  /// children to the start of the column.
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -75,6 +84,11 @@ class Footer extends StatelessWidget {
                       )
                     ],
                   ),
+                 /// The above code is creating a column widget with multiple Text widgets inside it.
+                 /// The Text widgets are displaying different strings with a specific style. The
+                 /// MainAxisAlignment is set to space between, which means the widgets will be evenly
+                 /// spaced out vertically. The size of the SizedBox widgets is set based on the height
+                 /// of the screen.
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -261,6 +275,11 @@ class Footer extends StatelessWidget {
                       ),
                     ],
                   ),
+                /// The above code is creating a container with a white background color, a border with
+                /// a low opacity black color, and a circular border radius of 10. Inside the container,
+                /// there is a column with a title text, some empty space, and a row of two SVG images
+                /// representing the Google Play and Apple Store logos. The container is wrapped in a
+                /// list of widgets.
                   Container(
                       decoration: BoxDecoration(
                           color: const Color(0xFFFFFFFF),
@@ -305,7 +324,12 @@ class Footer extends StatelessWidget {
                       ))
                 ],
               )
-            : Row(
+            : /// The above code is creating a Row widget with two children: an SVG image (loaded from a
+            /// constant variable) and a Column widget. The Column widget has one child, which is
+            /// another Row widget containing four SVG images (loaded from constant variables) with
+            /// some spacing between them. This code is likely creating a header or navigation bar for
+            /// a website or app.
+            Row(
                 children: [
                   SvgPicture.asset(
                     kHeaderIconImg,

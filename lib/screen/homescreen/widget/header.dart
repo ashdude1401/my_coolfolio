@@ -9,6 +9,12 @@ import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
 
+
+
+/// The Header and HeaderContent classes are used to display the header content of a responsive app,
+/// with different UI elements rendered based on the device screen type.
+
+
 class Header extends StatelessWidget {
   const Header({
     super.key,
@@ -19,6 +25,9 @@ class Header extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return ResponsiveBuilder(builder: (context, sizingInformation) {
+     /// Checking if the device screen type is a desktop or not, and assigning the result to the boolean
+     /// variable `kIsWeb`. This is used to conditionally render different UI elements based on the
+     /// device screen type.
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
       return Container(
@@ -40,7 +49,14 @@ class Header extends StatelessWidget {
               ],
             ),
           ),
-          child: kIsWeb
+          child:/// This code is conditionally rendering different UI elements based on the device
+          /// screen type. If the device screen type is a desktop, it will render a `Row` widget
+          /// with two child widgets: an `Expanded` widget containing a `HeaderContent` widget and
+          /// another `Expanded` widget containing an `Image.asset` widget. If the device screen
+          /// type is not a desktop, it will render a `Column` widget with two child widgets: a
+          /// `Padding` widget containing a `HeaderContent` widget and an `Image.asset` widget.
+          /// The `kIsWeb` boolean variable is used to determine which widget to render.
+           kIsWeb
               ? Row(
                   children: [
                     Expanded(
@@ -70,6 +86,11 @@ class Header extends StatelessWidget {
   }
 }
 
+
+
+/// The HeaderContent class is a stateless widget that displays the header content of a responsive app,
+/// including a title, subtitle, and a promotional message.
+
 class HeaderContent extends StatelessWidget {
   const HeaderContent({
     super.key,
@@ -82,7 +103,16 @@ class HeaderContent extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
-      return Column(
+      return /// This code is defining the UI elements for the header content of a responsive app. It
+      /// includes a `Column` widget with several child widgets, including a `RichText` widget
+      /// for the title and subtitle, a `Text` widget for additional text, a `Container` widget
+      /// with a promotional message, and a `PhoneNumberForm` widget (if the device screen type
+      /// is a desktop). The `mainAxisAlignment` property is set to `MainAxisAlignment.center` to
+      /// center the content vertically, and the `crossAxisAlignment` property is set to
+      /// `CrossAxisAlignment.start` to align the content to the left. The `kIsWeb` boolean
+      /// variable is used to conditionally render different styles and widgets based on the
+      /// device screen type.
+      Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

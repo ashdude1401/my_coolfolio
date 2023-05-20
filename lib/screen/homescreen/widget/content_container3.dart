@@ -7,6 +7,11 @@ import 'package:responsive_builder/responsive_builder.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
 
+
+
+/// The ContentContainer3 class is a stateful widget that displays a carousel slider with left and right
+/// arrow buttons and a dots indicator, and is responsive to different screen sizes.
+
 class ContentContainer3 extends StatefulWidget {
   const ContentContainer3({
     super.key,
@@ -61,6 +66,11 @@ class _ContentContainer3State extends State<ContentContainer3> {
                     left: size.width * 0.15,
                     child: Row(
                       children: [
+                     /// Creating a left arrow button that, when tapped, updates the current index and
+                     /// carousel controller to move to the previous page in the carousel. It is also
+                     /// wrapped in an InkWell widget to provide a visual feedback when tapped. The
+                     /// SizedBox widget is used to add spacing between the left arrow button and the
+                     /// DotsIndicator widget.
                         InkWell(
                           onTap: () {
                             setState(() {

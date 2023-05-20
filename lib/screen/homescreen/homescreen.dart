@@ -16,18 +16,20 @@ import '../../constants/image_strings.dart/image_string.dart';
 import '../../constants/text_constant.dart/text_constant.dart';
 import '../../utils/theme/my_theme.dart';
 
+/// The above code is defining a HomeScreen widget and a HomeScreenBody widget in Dart language for a
+/// Flutter application. The HomeScreen widget displays a header with "About", "Support" (only on web),
+/// and "Login" button, and a body with various content containers and a footer. The HomeScreenBody
+/// widget returns a SingleChildScrollView widget containing a Column of the content containers and a
+/// footer.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
-    required this.size,
-    required this.textTheme,
   });
-
-  final Size size;
-  final TextTheme textTheme;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final TextTheme textTheme = Theme.of(context).textTheme;
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final kIsWeb = sizingInformation.isDesktop;
@@ -43,6 +45,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               actions: [
+                /// The above code is defining a widget that displays a row with "About" and "Support"
+                /// text (only on web), and an elevated button with "Login" text. This widget is used as
+                /// the header of a scaffold, and the body of the scaffold is a HomeScreenBody widget.
                 Row(
                   children: [
                     kIsWeb
@@ -76,6 +81,9 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+/// The HomeScreenBody class returns a SingleChildScrollView widget containing a Column of various
+/// content containers and a footer.
+
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({
     super.key,
@@ -102,6 +110,8 @@ class HomeScreenBody extends StatelessWidget {
   }
 }
 
+/// The TestemonialCard class is a responsive widget that displays a customer testimonial with their
+/// name, boutique, and a short message, along with two circular avatars on either side.
 class TestemonialCard extends StatelessWidget {
   const TestemonialCard({
     Key? key,
@@ -121,7 +131,15 @@ class TestemonialCard extends StatelessWidget {
             color: Color(0xFFFFFFFF),
           ),
           child: kIsWeb
-              ? SizedBox(
+              ?
+
+              /// The above code is creating a testimonial section with a background image and two
+              /// circular avatars on the sides. The testimonial section is a centered container with a
+              /// white background, containing an image, customer name, boutique name, and testimonial
+              /// text. The code is using the Stack and Positioned widgets to position the avatars and
+              /// the testimonial section. The SizedBox widget is used to constrain the size of the
+              /// Stack widget.
+              SizedBox(
                   child: Stack(
                     children: [
                       Positioned(
@@ -217,7 +235,13 @@ class TestemonialCard extends StatelessWidget {
                     ],
                   ),
                 )
-              : Container(
+              :
+
+              /// The above code is creating a container with a testimonial image, customer name,
+              /// boutique name, and testimonial text. The container has a white background with
+              /// rounded corners and a shadow effect. The content is centered vertically and
+              /// horizontally within the container.
+              Container(
                   padding: EdgeInsets.only(
                     left: size.width * 0.05,
                     right: size.width * 0.05,
@@ -293,6 +317,9 @@ final List<TestemonialCard> testemonialCards = [
   const TestemonialCard(),
   const TestemonialCard(),
 ];
+
+/// The above code is creating a list of `SlidingCards` objects, each with an icon, text, description,
+/// and hero image. These cards are likely used in a UI to display information or options to the user.
 final List<SlidingCards> cards = [
   const SlidingCards(
       icon: kInsightIcon,
@@ -311,6 +338,9 @@ final List<SlidingCards> cards = [
       heroImg: kHeroImg43Png),
 ];
 
+/// The SlidingCards class is a stateless widget that displays a card with an icon, text, description,
+/// and hero image that can be displayed in a row or column depending on the device screen type.
+
 class SlidingCards extends StatelessWidget {
   const SlidingCards({
     super.key,
@@ -327,6 +357,12 @@ class SlidingCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// The above code is defining a `size` variable and a `textTheme` variable based on the `MediaQuery`
+    /// and `Theme` of the current `context`. It is then using the `ResponsiveBuilder` widget to build
+    /// the UI based on the `sizingInformation` provided by the `builder` function. Finally, it is
+    /// checking if the `deviceScreenType` of the `sizingInformation` is a desktop to determine if the
+    /// app is running on the web.
+
     final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
     return ResponsiveBuilder(builder: (context, sizingInformation) {
@@ -337,7 +373,17 @@ class SlidingCards extends StatelessWidget {
               horizontal: kIsWeb ? size.width * 0.05 : size.width * 0.05,
               vertical: kIsWeb ? 0 : size.height * 0.02),
           child: kIsWeb
-              ? Row(
+              ?
+
+              /// The above code is creating a `Row` widget with two `Expanded` children. The first
+              /// `Expanded` child contains a `Column` widget with an SVG icon, a headline text, a
+              /// description text, and some spacing. The second `Expanded` child contains an `Image`
+              /// widget with a hero image that fits within the available space. The
+              /// `mainAxisAlignment` property of the `Row` widget is set to
+              /// `MainAxisAlignment.spaceBetween` to evenly distribute the children along the
+              /// horizontal axis. The `crossAxisAlignment` property of the `Column` widget is set to
+              /// `CrossAxisAlignment.start` to
+              Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
@@ -370,7 +416,14 @@ class SlidingCards extends StatelessWidget {
                     ),
                   ],
                 )
-              : Column(
+              :
+
+              /// The above code is creating a `Column` widget with several child widgets including an
+              /// SVG icon, two `Text` widgets for displaying a title and description, an `Image`
+              /// widget for displaying a hero image, and some `SizedBox` widgets for adding spacing
+              /// between the child widgets. The `mainAxisAlignment` and `crossAxisAlignment`
+              /// properties are used to align the child widgets within the `Column`.
+              Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -405,6 +458,9 @@ class SlidingCards extends StatelessWidget {
     });
   }
 }
+
+/// The PhoneNumberForm class is a stateless widget that displays a phone number form and a button to
+/// get started, as well as text and images for downloading the app.
 
 class PhoneNumberForm extends StatelessWidget {
   const PhoneNumberForm({
@@ -482,6 +538,9 @@ class PhoneNumberForm extends StatelessWidget {
   }
 }
 
+/// The PhoneForm class is a stateless widget that displays a form for entering a phone number with a
+/// prefix and a text input field.
+
 class PhoneForm extends StatelessWidget {
   const PhoneForm({
     super.key,
@@ -543,6 +602,9 @@ class PhoneForm extends StatelessWidget {
     );
   }
 }
+
+/// The CustomCard class is a stateless widget that displays an icon, text, and description in a
+/// container with customizable dimensions and styling.
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
@@ -612,6 +674,9 @@ class CustomCard extends StatelessWidget {
     });
   }
 }
+
+/// The `CustomGridItem` class is a stateless widget that displays an item with an icon, text, and
+/// description in a container with a customizable color and size.
 
 class CustomGridItem extends StatelessWidget {
   const CustomGridItem({

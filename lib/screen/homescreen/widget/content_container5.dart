@@ -6,6 +6,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 import '../../../constants/image_strings.dart/image_string.dart';
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
+/// The ContentContainer5 class is a responsive container that displays an image and text with download
+/// links for the Darzee app.
 
 class ContentContainer5 extends StatelessWidget {
   const ContentContainer5({
@@ -26,7 +28,14 @@ class ContentContainer5 extends StatelessWidget {
           vertical: size.height * 0.05,
           horizontal: size.width * 0.05,
         ),
-        child: Stack(
+        child: /// The `Stack` widget is used to stack multiple widgets on top of each other. In this
+        /// case, it is used to stack an image and a column of text and download links. The
+        /// `ClipRRect` widget is used to clip the image with rounded corners using a
+        /// `BorderRadius` of 20. The `Padding` widget is used to add padding around the column
+        /// of text and download links. The `Column` widget is used to display the text and
+        /// download links in a vertical layout. The `Wrap` widget is used to wrap the download
+        /// links in a horizontal layout with spacing between them.
+        Stack(
           children: [
             ClipRRect(
                 borderRadius: BorderRadius.circular(20),

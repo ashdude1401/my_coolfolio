@@ -1,3 +1,4 @@
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,6 +9,9 @@ import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
 
+
+/// The ContentContainer2 class is a responsive container that displays information about the features
+/// of an app, including multilingual support, and includes a form for users to sign up.
 class ContentContainer2 extends StatelessWidget {
   const ContentContainer2({
     super.key,
@@ -20,7 +24,15 @@ class ContentContainer2 extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
-      return Container(
+      return /// The above code is creating a container with a column of child widgets. The container
+      /// has a width and padding set, and contains a decorated container with padding and margin
+      /// set. The decorated container has a child widget that is either a row or a column
+      /// depending on whether the app is running on the web or not. The row or column contains a
+      /// custom content widget and an image widget. Below this, there is a wrap widget
+      /// containing three custom card widgets. Below this, there is either a row or a column
+      /// containing a phone form widget and an elevated button widget. Finally, there is a text
+      /// widget and
+      Container(
         width: size.width,
         padding: EdgeInsets.symmetric(
           vertical: size.height * 0.02,
@@ -169,6 +181,11 @@ class ContentContainer2 extends StatelessWidget {
     });
   }
 }
+
+
+
+/// The Content class is a stateless widget that displays information about multilingual support and
+/// allows the user to select from a list of languages.
 
 class Content extends StatelessWidget {
   const Content({
