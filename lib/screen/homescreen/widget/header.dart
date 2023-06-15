@@ -1,14 +1,17 @@
 import 'package:darzee_web/constants/size_constant.dart/size_constant.dart';
 
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../../common_components/goodbye_text_playstore_icons.dart';
 import '../../../constants/image_strings.dart/image_string.dart';
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
 
+import 'dart:html' as html;
 
 class Header extends StatelessWidget {
   const Header({
@@ -30,14 +33,14 @@ class Header extends StatelessWidget {
               horizontal: kIsWeb ? 0.0 : kMobilePadding),
           decoration: BoxDecoration(
             color: MyTheme.kPrimaryColor.withOpacity(0.08),
-            gradient: const LinearGradient(
+            gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
               transform: GradientRotation(-0.5),
               colors: [
-                MyTheme.linercolor3,
-                MyTheme.linercolor1,
-                MyTheme.linercolor2,
+                MyTheme.linercolor3.withOpacity(0.1),
+                MyTheme.linercolor1.withOpacity(0.1),
+                MyTheme.linercolor2.withOpacity(0.1),
               ],
             ),
           ),
@@ -58,6 +61,7 @@ class Header extends StatelessWidget {
                   ],
                 )
               : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(
@@ -145,7 +149,8 @@ class HeaderContent extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.015, vertical: size.height * 0.015),
+                horizontal: size.width * 0.015,
+                vertical: size.height * 0.015),
             child: ShaderMask(
               shaderCallback: ((bounds) => const LinearGradient(
                       begin: Alignment.centerLeft,
@@ -171,12 +176,84 @@ class HeaderContent extends StatelessWidget {
             height: size.height * 0.05,
           ),
           kIsWeb
-              ? const PhoneNumberForm(
-                  showPhoneForm: true,
+              ? Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          html.window.open(
+                              "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
+                              "_blank");
+                        },
+                        child: Text("Fill form and win",
+                            style: textTheme.bodyMedium?.copyWith(
+                                color: const Color(0xFFFFFFFF),
+                                fontWeight: FontWeight.w600))),
+                    SizedBox(
+                      height: size.height * 0.02,
+                    ),
+                    const GoodbyeTextAndPlayStoreIcons()
+                  ],
                 )
+              // const PhoneNumberForm(
+              //     showPhoneForm: true,
+              //   )
+
               : const SizedBox()
         ],
       );
     });
+  }
+}
+
+class PhoneNumberForm extends StatelessWidget {
+  const PhoneNumberForm({
+    super.key,
+    this.showPhoneForm = false,
+  });
+
+  final bool showPhoneForm;
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        showPhoneForm
+            ? Wrap(
+                alignment: WrapAlignment.center,
+                children: [
+                  PhoneForm(
+                    formWidth: size.width * 0.2,
+                  ),
+                  SizedBox(
+                    width: size.width * 0.01,
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: size.width * 0.008,
+                          vertical: size.height * 0.030,
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(08)),
+                      ),
+                      onPressed: () {},
+                      child: const Text("Get Started")),
+                  SizedBox(
+                    width: size.width * 0.1,
+                  ),
+                ],
+              )
+            : const SizedBox(),
+        SizedBox(
+          height: size.height * 0.03,
+        ),
+        const GoodbyeTextAndPlayStoreIcons(),
+      ],
+    );
   }
 }

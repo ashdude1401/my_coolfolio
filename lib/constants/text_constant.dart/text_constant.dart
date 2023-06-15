@@ -16,17 +16,17 @@ const String kDiscoverOurTailoring =
 
 const String kRecordPayments = "Record Payments";
 const String kRecordPaymentsDesc =
-    "Available in multiple languages help you use the app effectively in any language";
+    "Never miss a payment again with Darzee's payment recording feature";
 
 const String kRecordMeasurements = "Record Measurement";
 
 const String kRecordMeasurementsDesc =
-    "Available in multiple languages help you use the app effectively in any language";
+    "Seamlessly record and access customer measurements for hassle-free stitching";
 
 const String kKeepCustomerUpdated = "Keep your customers Updated";
 
 const String kKeepCustomerUpdatedDesc =
-    "Available in multiple languages help you use the app effectively in any language";
+    "Streamline customer communication with automated order updates";
 
 const String kDataSafety = "Data Safety";
 
@@ -64,7 +64,7 @@ const String kShareInvoiceDesc =
 
 const String kOrderUpdateOnWhatsapp = "Order Updates Via Whatsapp or SMS";
 const String kOrderUpdateOnWhatsappDesc =
-    "Simplify your billing process by sending PDF invoices directly to customers' WhatsApp accounts";
+    "Stay connected with your customers every step of the way with our automated WhatsApp updates.";
 
 //Testimonials
 const String kCustomerName = "Binder";
@@ -72,7 +72,8 @@ const String kBoutique = "Boutique, Patiala";
 
 const String kTestonomial =
     "दर्ज़ी एप्लीकेशन ने मेरे टेलरिंग व्यवसाय को बदल दिया है। यह मैन्युअल रिकॉर्ड-कीपिंग की आवश्यकता को खत्म करता है और मुझे अपने ग्राहकों के लिए खास और बेहतरीन पोशाक बनाने पर ध्यान केंद्रित करने का ज़्यादा  समय  देता है। WhatsApp पर स्वचालित अपडेटों सेमेरी जिंदगी बहुत आसान हो गई है।";
-
+const String kTestemonial2 =
+    "ਮੈਂ ਟੇਲਰਿੰਗ ਬਿਜਨੈਸ ਲਈ ਡਿਜਿਟਲ ਪਲੇਟਫਾਰਮ ਤੇ ਜਾਣ ਦੇ ਲਈ ਹਿੰਮਤ ਨਹੀਂ ਕਰਦਾ ਸੀ, ਪਰ ਦਰਜ਼ੀ ਐਪ ਮੇਰੀ ਉਮੀਦਾਂ ਤੋਂ ਵੀ ਵੱਧਕੇ ਹੈ । ਦਰਜ਼ੀ ਏਪਲੀਕੇਸ਼ਨ ਵਰਤਣ ਵਿੱਚ ਸਹਜ ਹੈ ਅਤੇ ਟੀਮ ਨੇ ਮੇਰੇ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦਿੱਤੇ ਅਤੇ ਕੋਈ ਵੀ ਸਮੱਸਿਆ ਦਾ ਹੱਲ ਕਰਨ ਵਿੱਚ ਬਹੁਤ ਮਦਦ ਦਿੱਤੀ ਹੈ। ਮੇਰੇ ਗਾਹਕਾਂ ਨੂੰ ਟਾਈਮਲੀ ਅਪਡੇਟ ਮਿਲਦੇ ਹਨ ਅਤੇ ਮੈਨੂੰ ਆਪਣੇ ਬਿਜਨੈਸ ਨੂੰ ਇੱਕ ਪੇਸ਼ਾਵਰ ਦਰਸ਼ਨੀ ਨਾਲ ਚਲਾਉਣ ਵਿੱਚ ਬਹੁਤ ਮਦਦ ਮਿਲਦੀ ਹੈ ।";
 //Container 6
 const String kDownloadDarzee = "Download Darzee App";
 const String kDownloadDarzedDesc =

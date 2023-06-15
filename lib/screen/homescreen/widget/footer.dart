@@ -1,4 +1,8 @@
 import 'package:darzee_web/constants/image_strings.dart/image_string.dart';
+import 'package:darzee_web/screen/about_us_screen/about_us_screen.dart';
+import 'package:darzee_web/screen/faq_screen/faq_screen.dart';
+import 'package:darzee_web/screen/privacy_policy_screen/privacy_policy_screen.dart';
+import 'package:darzee_web/screen/terms_condition_screen/terms_condition_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +10,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
+
+import 'dart:html' as html;
 
 class Footer extends StatelessWidget {
   const Footer({
@@ -57,19 +63,37 @@ class Footer extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          SvgPicture.asset(kDiscordIcon),
+                          // SvgPicture.asset(kDiscordIcon),
+                          // SizedBox(
+                          //   width: size.width * 0.02,
+                          // ),
+                          GestureDetector(
+                            onTap: () => html.window.open(
+                                "https://instagram.com/thedarzeeapp?igshid=MzNlNGNkZWQ4Mg==",
+                                "_blank"),
+                            child: SvgPicture.asset(kInstagramIcon,
+                                height: size.height * 0.04),
+                          ),
                           SizedBox(
                             width: size.width * 0.02,
                           ),
-                          SvgPicture.asset(kInstagramIcon),
+                          GestureDetector(
+                              onTap: () => html.window.open(
+                                  "https://www.facebook.com/darzeeapp?mibextid=ZbWKwL",
+                                  "_blank"),
+                              child: SvgPicture.asset(kFbIcon,
+                                  height: size.height * 0.04)),
                           SizedBox(
                             width: size.width * 0.02,
                           ),
-                          SvgPicture.asset(kFbIcon),
-                          SizedBox(
-                            width: size.width * 0.02,
-                          ),
-                          SvgPicture.asset(kTwitterIcon),
+                          // SvgPicture.asset(kTwitterIcon),
+                          GestureDetector(
+                            onTap: () => html.window.open(
+                                "https://www.linkedin.com/company/darzee-app/",
+                                "_blank"),
+                            child: SvgPicture.asset(kLinkedIn,
+                                height: size.height * 0.038),
+                          )
                         ],
                       )
                     ],
@@ -80,52 +104,72 @@ class Footer extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "About Us",
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: MyTheme.kPrimaryColor,
-                            fontWeight: FontWeight.w900),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(AboutUsPage.routeName),
+                        child: Text(
+                          "About Us",
+                          style: textTheme.bodyMedium?.copyWith(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              color: MyTheme.kPrimaryColor,
+                              fontWeight: FontWeight.w900),
+                        ),
                       ),
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      Text(
-                        kSupport,
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: MyTheme.kPrimaryColor,
-                            fontWeight: FontWeight.w900),
+                      // GestureDetector(
+                      //   onTap: () => Navigator.of(context)
+                      //       .pushNamed(AboutUsPage.routeName),
+                      //   child: Text(
+                      //     kSupport,
+                      //     style: textTheme.bodyMedium?.copyWith(
+                      //         fontFamily: GoogleFonts.inter().fontFamily,
+                      //         color: MyTheme.kPrimaryColor,
+                      //         fontWeight: FontWeight.w900),
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: size.height * 0.02,
+                      // ),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(FaqScreen.namedRoute),
+                        child: Text(
+                          "FAQs",
+                          style: textTheme.bodyMedium?.copyWith(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              color: MyTheme.kPrimaryColor,
+                              fontWeight: FontWeight.w900),
+                        ),
                       ),
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      Text(
-                        "FAQs",
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: MyTheme.kPrimaryColor,
-                            fontWeight: FontWeight.w900),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(PrivacyPolicyScreen.namedRoute),
+                        child: Text(
+                          "Privacy Policy",
+                          style: textTheme.bodyMedium?.copyWith(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              color: MyTheme.kPrimaryColor,
+                              fontWeight: FontWeight.w900),
+                        ),
                       ),
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      Text(
-                        "Privacy Policy",
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: MyTheme.kPrimaryColor,
-                            fontWeight: FontWeight.w900),
-                      ),
-                      SizedBox(
-                        height: size.height * 0.02,
-                      ),
-                      Text(
-                        "Terms of service",
-                        style: textTheme.bodyMedium?.copyWith(
-                            fontFamily: GoogleFonts.inter().fontFamily,
-                            color: MyTheme.kPrimaryColor,
-                            fontWeight: FontWeight.w900),
+                      GestureDetector(
+                        onTap: () => Navigator.of(context)
+                            .pushNamed(TermsConditionScreen.namedRoute),
+                        child: Text(
+                          "Terms of service",
+                          style: textTheme.bodyMedium?.copyWith(
+                              fontFamily: GoogleFonts.inter().fontFamily,
+                              color: MyTheme.kPrimaryColor,
+                              fontWeight: FontWeight.w900),
+                        ),
                       ),
                     ],
                   ),
@@ -182,25 +226,44 @@ class Footer extends StatelessWidget {
                   Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          SvgPicture.asset(kDiscordIcon,
-                              height: size.height * 0.04),
+                          // SvgPicture.asset(kDiscordIcon,
+                          //     height: size.height * 0.04),
+                          // SizedBox(
+                          //   width: size.width * 0.02,
+                          // ),
+                          GestureDetector(
+                            onTap: () => html.window.open(
+                                "https://instagram.com/thedarzeeapp?igshid=MzNlNGNkZWQ4Mg==",
+                                "_blank"),
+                            child: SvgPicture.asset(kInstagramIcon,
+                                height: size.height * 0.04),
+                          ),
                           SizedBox(
                             width: size.width * 0.02,
                           ),
-                          SvgPicture.asset(kInstagramIcon,
-                              height: size.height * 0.04),
+                          GestureDetector(
+                              onTap: () => html.window.open(
+                                  "https://www.facebook.com/darzeeapp?mibextid=ZbWKwL",
+                                  "_blank"),
+                              child: SvgPicture.asset(kFbIcon,
+                                  height: size.height * 0.04)),
                           SizedBox(
                             width: size.width * 0.02,
                           ),
-                          SvgPicture.asset(kFbIcon, height: size.height * 0.04),
-                          SizedBox(
-                            width: size.width * 0.02,
-                          ),
-                          SvgPicture.asset(kTwitterIcon,
-                              height: size.width <= 280
-                                  ? size.height * 0.03
-                                  : size.height * 0.03),
+                          // SvgPicture.asset(kTwitterIcon,
+                          //     height: size.width <= 280
+                          //         ? size.height * 0.03
+                          //         : size.height * 0.03),
+                          GestureDetector(
+                            onTap: () => html.window.open(
+                                "https://www.linkedin.com/company/darzee-app/",
+                                "_blank"),
+                            child: SvgPicture.asset(kLinkedIn,
+                                height: size.height * 0.038),
+                          )
                         ],
                       ),
                     ],

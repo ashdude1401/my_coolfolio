@@ -1,11 +1,16 @@
+import 'package:darzee_web/screen/about_us_screen/about_us_screen.dart';
+import 'package:darzee_web/screen/faq_screen/faq_screen.dart';
 import 'package:darzee_web/screen/homescreen/homescreen.dart';
+import 'package:darzee_web/screen/privacy_policy_screen/privacy_policy_screen.dart';
+import 'package:darzee_web/screen/terms_condition_screen/terms_condition_screen.dart';
 import 'package:darzee_web/utils/theme/my_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 
-/// The code sets up a basic Flutter app with a home page and a theme.
 
 void main() {
   runApp(const MyApp());
+  setPathUrlStrategy();
 }
 
 class MyApp extends StatelessWidget {
@@ -14,11 +19,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: MyTheme.lightTheme(context),
-      debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
-    );
+        title: 'Darzee App',
+        theme: MyTheme.lightTheme(context),
+        debugShowCheckedModeBanner: false,
+        // home: const MyHomePage(),
+        initialRoute: HomeScreen.routeName,
+        routes: {
+          HomeScreen.routeName: (context) => const HomeScreen(),
+          AboutUsPage.routeName: (context) => const AboutUsPage(),
+          FaqScreen.namedRoute: (context) => const FaqScreen(),
+          PrivacyPolicyScreen.namedRoute: (context) =>
+              const PrivacyPolicyScreen(),
+          TermsConditionScreen.namedRoute: (context) =>
+              const TermsConditionScreen(),
+        });
   }
 }
 

@@ -18,29 +18,31 @@ class ContentContainer1 extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
-      return Container(
-          height: kIsWeb ? size.height * 0.99 : null,
-          width: size.width,
-          padding: EdgeInsets.symmetric(
-            vertical: size.height * 0.04,
-            horizontal: size.width * 0.04,
-          ),
-          child: kIsWeb
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                        flex: 2,
-                        child: Image.asset(kHeroImg2Png,
-                            height: size.height * 0.7, fit: BoxFit.contain)),
-                    const Spacer(),
-                    const Expanded(
-                      flex: 3,
-                      child: Content(),
-                    )
-                  ],
-                )
-              : const Content());
+      return SelectionArea(
+        child: Container(
+            height: kIsWeb ? size.height * 0.99 : null,
+            width: size.width,
+            padding: EdgeInsets.symmetric(
+              vertical: size.height * 0.04,
+              horizontal: size.width * 0.04,
+            ),
+            child: kIsWeb
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                          flex: 2,
+                          child: Image.asset(kHeroImg2Png,
+                              height: size.height * 0.7, fit: BoxFit.cover)),
+                      const Spacer(),
+                      const Expanded(
+                        flex: 3,
+                        child: Content(),
+                      )
+                    ],
+                  )
+                : const Content()),
+      );
     });
   }
 }

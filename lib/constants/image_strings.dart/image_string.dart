@@ -43,6 +43,10 @@ const String kWhatsAppIcon = "asset/images/whatsAppIcon.svg";
 const String kTestimonialImg1 = "asset/images/cusotmerDp1.svg";
 const String kTestimonialImg1Png = "asset/images/testomonialImag1.png";
 
+const String kGentsTailorImg = "asset/images/taloir1-transformed.png";
+const String kLadiesTailorImg = "asset/images/ladiesTalior.png";
+const String kPunjabiTailorImg = "asset/images/panjabiTalior.png";
+
 //Container 6
 const String kHeroImg6 = "asset/images/heroImg6.svg";
 const String kHeroImg6Png = "asset/images/heroImg6.png";
@@ -58,3 +62,6 @@ const String kAppleStoreLight = "asset/images/appstoreLight.svg";
 const String kHeroImgMobile6 = "asset/images/container6Mobile.svg";
 
 const String kHeroImgMobile6Png = "asset/images/HeroImg6ImgPhone.png";
+
+//Footer
+const String kLinkedIn = "asset/images/linkedin.svg";
