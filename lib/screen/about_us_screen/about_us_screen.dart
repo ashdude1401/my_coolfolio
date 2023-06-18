@@ -1,3 +1,4 @@
+import 'package:darzee_web/common_components/darawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,12 +25,13 @@ class AboutUsPage extends StatelessWidget {
       return SelectionArea(
         child: Scaffold(
           backgroundColor: const Color(0xFFFFFFFF),
+          endDrawer: drawer(),
           appBar: AppBar(
             automaticallyImplyLeading: false,
             elevation: kIsWeb ? null : 0,
             title: Padding(
               padding: EdgeInsets.only(
-                left: kIsWeb ? size.width * 0.06 : kMobilePadding,
+                left: kIsWeb ? size.width * 0.035 : kMobilePadding,
               ),
               child: InkWell(
                 splashColor: Colors.white,
@@ -68,35 +70,32 @@ class AboutUsPage extends StatelessWidget {
                             SizedBox(
                               width: size.width * 0.03,
                             ),
-                            // InkWell(
-                            //   hoverColor: Colors.transparent,
-                            //   onTap: () => Navigator.pushNamed(
-                            //       context, AboutUsPage.routeName),
-                            //   child: Text("Support",
-                            //       style: textTheme.titleMedium
-                            //           ?.copyWith(fontWeight: FontWeight.w500)),
-                            // ),
-                            // SizedBox(
-                            //   width: size.width * 0.03,
-                            // ),
                           ],
                         )
                       : const SizedBox(),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      right: size.width * 0.04,
-                    ),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          html.window.open(
-                              "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
-                              "_blank");
-                        },
-                        child: Text("Fill Form",
-                            style: textTheme.bodyMedium?.copyWith(
-                                color: const Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.w700))),
-                  ),
+                  kIsWeb
+                      ? Padding(
+                          padding: EdgeInsets.only(
+                            right: size.width * 0.04,
+                          ),
+                          child: ElevatedButton(
+                              onPressed: () {
+                                html.window.open(
+                                    "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
+                                    "_blank");
+                              },
+                              child: Text("Fill Form",
+                                  style: textTheme.bodyMedium?.copyWith(
+                                      color: const Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.w700))),
+                        )
+                      : Builder(
+                          builder: (context) => IconButton(
+                            onPressed: () =>
+                                Scaffold.of(context).openEndDrawer(),
+                            icon: Icon(Icons.menu),
+                          ),
+                        ),
                 ],
               ),
             ],

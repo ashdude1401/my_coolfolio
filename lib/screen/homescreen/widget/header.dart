@@ -91,9 +91,8 @@ class HeaderContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RichText(
-            softWrap: true,
-            text: TextSpan(
+          SelectableText.rich(
+            TextSpan(
               style: kIsWeb
                   ? textTheme.headlineLarge
                   : textTheme.headlineMedium
@@ -149,8 +148,7 @@ class HeaderContent extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
             ),
             padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.015,
-                vertical: size.height * 0.015),
+                horizontal: size.width * 0.015, vertical: size.height * 0.015),
             child: ShaderMask(
               shaderCallback: ((bounds) => const LinearGradient(
                       begin: Alignment.centerLeft,

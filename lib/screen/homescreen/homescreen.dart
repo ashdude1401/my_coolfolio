@@ -1,5 +1,6 @@
 import 'package:darzee_web/constants/size_constant.dart/size_constant.dart';
 import 'package:darzee_web/screen/about_us_screen/about_us_screen.dart';
+
 import 'package:darzee_web/screen/homescreen/widget/content_container1.dart';
 import 'package:darzee_web/screen/homescreen/widget/content_container2.dart';
 import 'package:darzee_web/screen/homescreen/widget/content_container3.dart';
@@ -13,11 +14,14 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../common_components/darawer.dart';
 import '../../constants/image_strings.dart/image_string.dart';
 import '../../constants/text_constant.dart/text_constant.dart';
 import '../../utils/theme/my_theme.dart';
 
 import 'dart:html' as html;
+
+// import '../about_us_screen/about_us_screen_new.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -34,6 +38,7 @@ class HomeScreen extends StatelessWidget {
         final kIsWeb = sizingInformation.isDesktop;
         return SelectionArea(
           child: Scaffold(
+              endDrawer: drawer(),
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 elevation: kIsWeb ? null : 0,
@@ -79,35 +84,32 @@ class HomeScreen extends StatelessWidget {
                                 SizedBox(
                                   width: size.width * 0.03,
                                 ),
-                                // InkWell(
-                                //   hoverColor: Colors.transparent,
-                                //   onTap: () => Navigator.pushNamed(
-                                //       context, AboutUsPage.routeName),
-                                //   child: Text("Support",
-                                //       style: textTheme.titleMedium?.copyWith(
-                                //           fontWeight: FontWeight.w500)),
-                                // ),
-                                // SizedBox(
-                                //   width: size.width * 0.03,
-                                // ),
                               ],
                             )
                           : const SizedBox(),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          right: size.width * 0.04,
-                        ),
-                        child: ElevatedButton(
-                            onPressed: () {
-                              html.window.open(
-                                  "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
-                                  "_blank");
-                            },
-                            child: Text("Fill Form",
-                                style: textTheme.bodyMedium?.copyWith(
-                                    color: const Color(0xFFFFFFFF),
-                                    fontWeight: FontWeight.w700))),
-                      ),
+                      kIsWeb
+                          ? Padding(
+                              padding: EdgeInsets.only(
+                                right: size.width * 0.04,
+                              ),
+                              child: ElevatedButton(
+                                  onPressed: () {
+                                    html.window.open(
+                                        "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
+                                        "_blank");
+                                  },
+                                  child: Text("Fill Form",
+                                      style: textTheme.bodyMedium?.copyWith(
+                                          color: const Color(0xFFFFFFFF),
+                                          fontWeight: FontWeight.w700))),
+                            )
+                          : Builder(
+                              builder: (context) => IconButton(
+                                onPressed: () =>
+                                    Scaffold.of(context).openEndDrawer(),
+                                icon: Icon(Icons.menu),
+                              ),
+                            ),
                     ],
                   ),
                 ],
