@@ -2,10 +2,12 @@
 
 const String kHeaderIconImg = 'asset/images/haderIcon.svg';
 const String kHeroImg = "asset/images/heroImg.svg";
-const String kHeroImgPng = "asset/images/heroImgPng.png";
+const String kHeroImgPng = "asset/images/my_dp_pixelated.png";
 
 const String kGooglePlayImg = "asset/images/googleplay.svg";
 const String kAppStoreImg = "asset/images/appStore.svg";
+
+const String kMydpImg = "asset/images/my_dp.jpg";
 
 //container 2
 

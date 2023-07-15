@@ -1,14 +1,3 @@
-import 'package:darzee_web/constants/size_constant.dart/size_constant.dart';
-import 'package:darzee_web/screen/about_us_screen/about_us_screen.dart';
-
-import 'package:darzee_web/screen/homescreen/widget/content_container1.dart';
-import 'package:darzee_web/screen/homescreen/widget/content_container2.dart';
-import 'package:darzee_web/screen/homescreen/widget/content_container3.dart';
-import 'package:darzee_web/screen/homescreen/widget/content_container4.dart';
-import 'package:darzee_web/screen/homescreen/widget/content_container5.dart';
-import 'package:darzee_web/screen/homescreen/widget/footer.dart';
-import 'package:darzee_web/screen/homescreen/widget/header.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,43 +5,102 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../common_components/darawer.dart';
 import '../../constants/image_strings.dart/image_string.dart';
+import '../../constants/size_constant.dart/size_constant.dart';
 import '../../constants/text_constant.dart/text_constant.dart';
 import '../../utils/theme/my_theme.dart';
 
 import 'dart:html' as html;
 
+import '../about_us_screen/about_us_screen.dart';
+import 'widget/content_container1.dart';
+import 'widget/content_container2.dart';
+import 'widget/content_container3.dart';
+import 'widget/content_container4.dart';
+import 'widget/content_container5.dart';
+import 'widget/footer.dart';
+import 'widget/header.dart';
+
 // import '../about_us_screen/about_us_screen_new.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({
     super.key,
   });
   static const routeName = "/home";
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late final AnimationController animationController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+      lowerBound: 0,
+      upperBound: 1,
+    );
+    animationController.repeat(reverse: true);
+
+    animationController.addListener(_markDirty);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    animationController.dispose();
+    super.dispose();
+  }
+
+  void _markDirty() {
+    setState(() {});
+  }
+
+  static const double borderWidth = 3;
+  static const double cornerRadius = 10;
+  static const Color borderColor = MyTheme.kPrimaryColor;
+
+  @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final TextTheme textTheme = Theme.of(context).textTheme;
+
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final kIsWeb = sizingInformation.isDesktop;
         return SelectionArea(
           child: Scaffold(
+              backgroundColor: MyTheme.linercolor4,
               endDrawer: drawer(),
               appBar: AppBar(
+                backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                elevation: kIsWeb ? null : 0,
+                elevation:  0,
                 title: Padding(
                   padding: EdgeInsets.only(
                     left: kIsWeb ? size.width * 0.035 : kMobilePadding,
                   ),
                   child: InkWell(
                     splashColor: Colors.white,
-                    hoverColor: Colors.white,
+                    hoverColor: MyTheme.kPrimaryAccentColor,
                     onTap: () =>
                         Navigator.pushNamed(context, HomeScreen.routeName),
-                    child: SvgPicture.asset(
-                      kHeaderIconImg,
+                    child: BorderedBox(
+                      text: "Ashdude😎",
+                      shape: BeveledRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            cornerRadius * animationController.value),
+                        side: BorderSide(
+                            color: borderColor,
+                            width: borderWidth,
+                            strokeAlign: (animationController.value * 2) - 1),
+                      ),
                     ),
                   ),
                 ),
@@ -66,8 +114,9 @@ class HomeScreen extends StatelessWidget {
                                   hoverColor: Colors.transparent,
                                   onTap: () => Navigator.pushNamed(
                                       context, HomeScreen.routeName),
-                                  child: Text("Home",
-                                      style: textTheme.titleMedium?.copyWith(
+                                  child: Text("127.0.0.1",
+                                      style: textTheme.headlineMedium?.copyWith(
+                                          color: Color(0xFFBABABA),
                                           fontWeight: FontWeight.w500)),
                                 ),
                                 SizedBox(
@@ -78,7 +127,8 @@ class HomeScreen extends StatelessWidget {
                                   onTap: () => Navigator.pushNamed(
                                       context, AboutUsPage.routeName),
                                   child: Text("About",
-                                      style: textTheme.titleMedium?.copyWith(
+                                      style: textTheme.headlineMedium?.copyWith(
+                                          color: Color(0xFFBABABA),
                                           fontWeight: FontWeight.w500)),
                                 ),
                                 SizedBox(
@@ -121,6 +171,33 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+class BorderedBox extends StatelessWidget {
+  const BorderedBox({super.key, required this.shape, required this.text});
+
+  final ShapeBorder shape;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      decoration: ShapeDecoration(
+        // color: MyTheme.kPrimaryAccentColor,
+        shape: shape,
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: Color(0xFFBABABA),
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+}
+
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({
     super.key,
@@ -128,9 +205,9 @@ class HomeScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
+    return SingleChildScrollView(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Header(),
           ContentContainer1(),

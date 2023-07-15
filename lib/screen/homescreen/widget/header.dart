@@ -1,17 +1,15 @@
-import 'package:darzee_web/constants/size_constant.dart/size_constant.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../common_components/goodbye_text_playstore_icons.dart';
 import '../../../constants/image_strings.dart/image_string.dart';
+// import '../../../constants/size_constant.dart/size_constant.dart';
+import '../../../constants/size_constant.dart/size_constant.dart';
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 import '../homescreen.dart';
-
-import 'dart:html' as html;
 
 class Header extends StatelessWidget {
   const Header({
@@ -26,11 +24,17 @@ class Header extends StatelessWidget {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
       return Container(
-          height: kIsWeb ? size.height * 0.99 : null,
+          // height: kIsWeb ? size.height * 0.99 : null,
           width: size.width,
-          padding: EdgeInsets.symmetric(
-              vertical: size.height * 0.04,
-              horizontal: kIsWeb ? 0.0 : kMobilePadding),
+          // padding: EdgeInsets.symmetric(
+          //     vertical: size.height * 0.04,
+          //     horizontal: kIsWeb ? 0.0 : kMobilePadding),
+          padding: EdgeInsets.only(
+            left: kIsWeb ? size.width * 0.035 : kMobilePadding,
+            right: kIsWeb ? size.width * 0.035 : kMobilePadding,
+            top: size.height * 0.12,
+            bottom: size.height * 0.12,
+          ),
           decoration: BoxDecoration(
             color: MyTheme.kPrimaryColor.withOpacity(0.08),
             gradient: LinearGradient(
@@ -46,18 +50,28 @@ class Header extends StatelessWidget {
           ),
           child: kIsWeb
               ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: Padding(
                         padding: EdgeInsets.only(
                             left: size.width * 0.04, right: size.width * 0.01),
                         child: const HeaderContent(),
                       ),
                     ),
+                    SizedBox(
+                      width: size.width * 0.1,
+                    ),
                     Expanded(
-                        flex: 3,
-                        child: Image.asset(kHeroImgPng, fit: BoxFit.contain)),
+                        flex: 2,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            clipBehavior: Clip.antiAlias,
+                            child: Image.asset(
+                              kHeroImgPng,
+                              fit: BoxFit.cover,
+                            ))),
                   ],
                 )
               : Column(
@@ -87,118 +101,68 @@ class HeaderContent extends StatelessWidget {
     return ResponsiveBuilder(builder: (context, sizingInformation) {
       final kIsWeb =
           sizingInformation.deviceScreenType == DeviceScreenType.desktop;
+
+      final headerTextThemeStyle = kIsWeb
+          ? Theme.of(context).textTheme.displayLarge?.copyWith(
+              color: MyTheme.kPrimaryColor, fontWeight: FontWeight.w600)
+          : textTheme.displayLarge?.apply(
+              fontWeightDelta: 2,
+              color: MyTheme.kPrimaryColor,
+            );
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SelectableText.rich(
-            TextSpan(
-              style: kIsWeb
-                  ? textTheme.headlineLarge
-                  : textTheme.headlineMedium
-                      ?.copyWith(fontWeight: FontWeight.w800),
-              children: [
-                TextSpan(
-                  text: headingText1,
-                  style: kIsWeb
-                      ? TextStyle(
-                          fontFamily: GoogleFonts.inter().fontFamily,
-                          fontWeight: FontWeight.w700,
-                          overflow: TextOverflow.ellipsis)
-                      : textTheme.headlineSmall
-                          ?.copyWith(fontWeight: FontWeight.w800),
-                ),
-                TextSpan(
-                  text: headingText2,
-                  style: kIsWeb
-                      ? TextStyle(
-                          fontFamily: GoogleFonts.inter().fontFamily,
-                          overflow: TextOverflow.ellipsis,
-                          fontWeight: FontWeight.bold,
-                          color: MyTheme.kSecondaryColor,
-                        )
-                      : textTheme.headlineMedium?.apply(
-                          fontWeightDelta: 2,
-                          fontSizeFactor: 0.8,
-                          color: MyTheme.kSecondaryColor,
-                        ),
-                ),
-              ],
-            ),
-          ),
+          Text("Hi, I'm ", style: headerTextThemeStyle),
           SizedBox(
             height: size.height * 0.02,
           ),
-          Text(
-            subtitle1,
-            style: kIsWeb
-                ? TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: MyTheme.kPrimaryColor.withOpacity(0.8))
-                : textTheme.bodyMedium?.apply(
-                    fontWeightDelta: 2,
-                    color: MyTheme.kPrimaryColor.withOpacity(0.8)),
-          ),
-          SizedBox(
-            height: size.height * 0.05,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: MyTheme.kSecondaryColor.withOpacity(0.05),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.015, vertical: size.height * 0.015),
-            child: ShaderMask(
-              shaderCallback: ((bounds) => const LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                        Color(0xFF0646FF),
-                        Color(0xFF6877FF),
-                        Color(0xFF2B1AE9)
-                      ]).createShader(bounds)),
-              child: Text(
-                  "For the first 100 Users app will remain Free for a Lifetime.",
-                  style: kIsWeb
-                      ? textTheme.bodyMedium?.copyWith(
-                          color: MyTheme.kSecondaryColor,
-                          fontWeight: FontWeight.w600)
-                      : textTheme.bodySmall?.apply(
-                          fontWeightDelta: 2,
-                          color: MyTheme.kSecondaryColor,
-                        )),
-            ),
-          ),
-          SizedBox(
-            height: size.height * 0.05,
-          ),
-          kIsWeb
-              ? Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          html.window.open(
-                              "https://docs.google.com/forms/d/e/1FAIpQLSdLeHFaFjERl59_EODV_s3vZeaZLsymXQDI0yb4JDDsQ7J4rg/viewform",
-                              "_blank");
-                        },
-                        child: Text("Fill form and win",
-                            style: textTheme.bodyMedium?.copyWith(
-                                color: const Color(0xFFFFFFFF),
-                                fontWeight: FontWeight.w600))),
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-                    const GoodbyeTextAndPlayStoreIcons()
-                  ],
-                )
-              // const PhoneNumberForm(
-              //     showPhoneForm: true,
-              //   )
-
-              : const SizedBox()
+          AnimatedTextKit(animatedTexts: [
+            TyperAnimatedText('Ashdude 8-)',
+                textStyle:
+                    headerTextThemeStyle?.copyWith(color: MyTheme.linercolor3),
+                speed: Duration(milliseconds: 100)),
+            TyperAnimatedText('a Coder 🧑‍💻',
+                textStyle:
+                    headerTextThemeStyle?.copyWith(color: Color(0xFF68ACB0)),
+                speed: Duration(milliseconds: 100)),
+            TyperAnimatedText('a developer ⚒️',
+                textStyle:
+                    headerTextThemeStyle?.copyWith(color: Color(0xFFBE9BE5)),
+                speed: Duration(milliseconds: 100)),
+            TyperAnimatedText('a born explorer 🌏',
+                textStyle:
+                    headerTextThemeStyle?.copyWith(color: Color(0xFFDA77D6)),
+                speed: Duration(milliseconds: 100)),
+            TyperAnimatedText('a curious guy🤔',
+                textStyle: headerTextThemeStyle?.copyWith(
+                    color: MyTheme.kPrimaryAccentColor),
+                speed: Duration(milliseconds: 100)),
+          ]),
+          // Text(
+          //   headingText1,
+          //   style: kIsWeb
+          //       ? Theme.of(context).textTheme.displayLarge?.copyWith(
+          //           color: MyTheme.kPrimaryColor, fontWeight: FontWeight.w600)
+          //       : textTheme.displayLarge?.apply(
+          //           fontWeightDelta: 2,
+          //           color: MyTheme.kPrimaryColor,
+          //         ),
+          // ),
+          // SizedBox(
+          //   height: size.height * 0.02,
+          // ),
+          // Text(
+          //   headingText2,
+          //   softWrap: true,
+          //   style: kIsWeb
+          //       ? Theme.of(context).textTheme.displaySmall?.copyWith(
+          //           color: MyTheme.kPrimaryColor, fontWeight: FontWeight.w600)
+          //       : textTheme.displayMedium?.apply(
+          //           fontWeightDelta: 2,
+          //           color: MyTheme.kPrimaryColor,
+          //         ),
+          // ),
         ],
       );
     });

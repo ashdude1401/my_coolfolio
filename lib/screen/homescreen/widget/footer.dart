@@ -1,17 +1,19 @@
-import 'package:darzee_web/constants/image_strings.dart/image_string.dart';
-import 'package:darzee_web/screen/about_us_screen/about_us_screen.dart';
-import 'package:darzee_web/screen/faq_screen/faq_screen.dart';
-import 'package:darzee_web/screen/privacy_policy_screen/privacy_policy_screen.dart';
-import 'package:darzee_web/screen/terms_condition_screen/terms_condition_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../../constants/image_strings.dart/image_string.dart';
 import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 
 import 'dart:html' as html;
+
+import '../../about_us_screen/about_us_screen.dart';
+import '../../faq_screen/faq_screen.dart';
+import '../../privacy_policy_screen/privacy_policy_screen.dart';
+import '../../terms_condition_screen/terms_condition_screen.dart';
 
 class Footer extends StatelessWidget {
   const Footer({

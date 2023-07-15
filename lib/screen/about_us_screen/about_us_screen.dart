@@ -1,9 +1,10 @@
-import 'package:darzee_web/common_components/darawer.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
+import '../../common_components/darawer.dart';
 import '../../constants/image_strings.dart/image_string.dart';
 import '../../constants/size_constant.dart/size_constant.dart';
 import 'dart:html' as html;

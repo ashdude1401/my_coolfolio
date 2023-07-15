@@ -3,25 +3,27 @@ import 'package:google_fonts/google_fonts.dart';
 
 class MyTheme {
 //colors
-  static const Color kPrimaryColor = Color(0xFF323232);
-  static const Color kSecondaryColor = Color(0xFF4D7AFF);
-  static const Color kPrimaryAccentColor = Color(0xFFFFFFFF);
+  // static const Color kPrimaryColor = Color.fromRGBO(41, 45, 62, 1);
+  static const Color kPrimaryColor = Color(0xFFBABABA);
+  static const Color kSecondaryColor = Color(0xFFFF621F);
+  static const Color kPrimaryAccentColor = Color.fromRGBO(139, 92, 246, 1);
   static Color creamColor = const Color(0xffffffff);
   static Color darkcreamColor = const Color.fromARGB(255, 36, 41, 51);
 
-  static const Color linercolor1 = Color(0xFFDDE5FF);
-  static const Color linercolor2 = Color(0xFFF9FAFF);
+  static const Color linercolor1 = Colors.white;
+  static const Color linercolor2 = Colors.grey;
   static const Color linercolor3 = Color(0xFFFF4C7A);
+  static const Color linercolor4 = Color(0xFF1E1E1E);
 
   //theme
   static ThemeData lightTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.inter().fontFamily,
+        fontFamily: GoogleFonts.vt323().fontFamily,
         cardColor: Colors.white,
         canvasColor: creamColor,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: kSecondaryColor,
-            foregroundColor: Colors.white,
+            foregroundColor: Color(0xFFBABABA),
             padding:
                 const EdgeInsets.symmetric(horizontal: 18.0, vertical: 14.0),
             shape: RoundedRectangleBorder(
@@ -36,7 +38,7 @@ class MyTheme {
           brightness: Brightness.light,
         ),
         textTheme:
-            GoogleFonts.interTextTheme(ThemeData.light().textTheme).copyWith(
+            GoogleFonts.vt323TextTheme(ThemeData.light().textTheme).copyWith(
           bodySmall: const TextStyle(color: kPrimaryColor),
           bodyLarge: const TextStyle(color: kPrimaryColor),
           bodyMedium: const TextStyle(color: kPrimaryColor),
@@ -61,7 +63,7 @@ class MyTheme {
       );
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
-        fontFamily: GoogleFonts.inter().fontFamily,
+        fontFamily: GoogleFonts.vt323().fontFamily,
         cardColor: Colors.black,
         canvasColor: darkcreamColor,
         colorScheme: ColorScheme.fromSwatch().copyWith(

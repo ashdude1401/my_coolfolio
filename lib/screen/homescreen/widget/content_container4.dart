@@ -1,11 +1,12 @@
+
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:darzee_web/constants/text_constant.dart/text_constant.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 import '../../../constants/image_strings.dart/image_string.dart';
+import '../../../constants/text_constant.dart/text_constant.dart';
 import '../../../utils/theme/my_theme.dart';
 
 /// The `ContentContainer4` class creates a carousel slider widget using the `CarouselSlider` class from

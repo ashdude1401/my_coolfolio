@@ -3,8 +3,9 @@
 //Home Page
 
 //Container 1
-const headingText1 = "Digitize Your Tailoring Business with ";
-const headingText2 = "Darzee";
+const headingText1 = "Hi, I am Ashdude 8-) ";
+const headingText2 =
+    "I’m a curious person who loves to learn new things and explore new places!🤔🌍";
 const subtitle1 = "Discover Our Tailoring CRM Solution Today !";
 
 //Container 2
